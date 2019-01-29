@@ -21,15 +21,13 @@ exports.validate = method => {
 }
 
 const validationHandler = next => result => {
-    if (result.isEmpty()) return
+	if (result.isEmpty()) return
 
-    if (!next) {
-        throw new Error(
-            result.array.map(i => `'${i.param}' has ${i.msg}`).join(' ')
-        )
-    } else {
-        return next(result.array.map(i => `'${i.param}' has ${i.msg}`).join(' '))
-    }
+	if (!next) {
+		throw new Error(result.array.map(i => `'${i.param}' has ${i.msg}`).join(' '))
+	} else {
+		return next(result.array.map(i => `'${i.param}' has ${i.msg}`).join(' '))
+	}
 }
 
 exports.createUser = (req, res, next) => {
@@ -43,7 +41,9 @@ exports.createUser = (req, res, next) => {
 				email,
 				phone,
 				status
-			}).then(user => res.josn(user))
+			})
+				.then(user => res.josn(user))
+				.cath(next)
 		})
 		.catch(next)
 }
