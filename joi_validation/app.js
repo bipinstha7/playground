@@ -10,8 +10,9 @@ const port = process.env.NODE_ENV || 3000
 // app configurations
 app.set('port', port)
 
-// load pp middlewares
-app.use(logger('dev'))
+if (process.env.NODE_ENV !== 'production') {
+    app.use(logger('dev'))
+}
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
