@@ -22,7 +22,7 @@ const personDataSchema = Joi.object().keys({
     type: Joi.string().valid('STUDENT', 'TEACHER').uppercase().required(),
     sex: Joi.string().valid(['M', 'F', 'MALE', 'FEMALE']).uppercase().required(),
 
-    // if thpe is STUDENT, then age is required
+    // if type is STUDENT, then age is required
     age = Joi.when('type', {
         is: 'STUDENT',
         then: ageSchema.required(),
