@@ -54,7 +54,7 @@ app.post('/test', (req, res, next) => {
     // validate the request data against the schema
     Joi.validate(data, schema, (err, value) => {
         // create a random number as id
-        constid = Math.ceil(Math.random() * 9999999)
+        const id = Math.ceil(Math.random() * 9999999)
 
         if (err) {
             // send a 422 error response if validation fails
