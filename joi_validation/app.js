@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
     app.use(logger('dev'))
 }
 
-// we can use express.json() which is inbuilt packate in express instead of bodyparser
+// we can use express.json() which is inbuilt package in express instead of bodyparser
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
