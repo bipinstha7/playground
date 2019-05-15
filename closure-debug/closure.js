@@ -1,3 +1,5 @@
+// function declaration
+
 // function createCounter() {
 //     let counter = 0
 //     function myFunction() {
@@ -11,6 +13,8 @@
 //   const c2 = increment()
 //   const c3 = increment()
 //   console.log('example increment', c1, c2, c3)
+
+// function expression
 
 let createCounter = function() {
   let counter = 0
