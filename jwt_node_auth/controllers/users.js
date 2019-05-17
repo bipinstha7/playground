@@ -44,4 +44,10 @@ module.exports = {
 			})
 			.catch(err => res.status(500).json(err))
 	},
+	getAll: (req, res) => {
+		User.find({})
+			.select('-password')
+			.then(users => res.status(200).send(users))
+			.catch(err => res.status(500).send(err))
+	},
 }
