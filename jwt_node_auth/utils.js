@@ -6,10 +6,9 @@ module.exports = {
 
 		if (authorizationHeader) {
 			// Bearer <token>
-			const token = req.headers.authorization
+			const token = req.header('authorization')
 			const options = {
 				expiresIn: '2d',
-				issuer: 'sthabipin.com.np',
 			}
 
 			try {

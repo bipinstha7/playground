@@ -27,7 +27,6 @@ module.exports = {
 								const payload = { user: user.name }
 								const options = {
 									expiresIn: '2d',
-									issuer: 'sthabipin.com.np',
 								}
 								const secret = process.env.JWT_SECRET
 								const token = jwt.sign(payload, secret, options)
