@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 const User = require('../models/users')
 
 module.exports = {
@@ -22,7 +23,16 @@ module.exports = {
 						.compare(password, user.password)
 						.then(match => {
 							if (match) {
-								res.status(200).send(user.name)
+								// create a token
+								const payload = { user: user.name }
+								const options = { expiresIn: '2d' }
+								const secret = process.env.JWT_SECRET
+								const token = jwt.sign(payload, secret, options)
+
+								res.status(200).send({
+									name: user.name,
+									token,
+								})
 							} else {
 								res.status(401).json('Authentication Error')
 							}
