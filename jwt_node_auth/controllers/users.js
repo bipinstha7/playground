@@ -25,7 +25,10 @@ module.exports = {
 							if (match) {
 								// create a token
 								const payload = { user: user.name }
-								const options = { expiresIn: '2d' }
+								const options = {
+									expiresIn: '2d',
+									issuer: 'sthabipin.com.np',
+								}
 								const secret = process.env.JWT_SECRET
 								const token = jwt.sign(payload, secret, options)
 
@@ -45,9 +48,17 @@ module.exports = {
 			.catch(err => res.status(500).json(err))
 	},
 	getAll: (req, res) => {
-		User.find({})
-			.select('-password')
-			.then(users => res.status(200).send(users))
-			.catch(err => res.status(500).send(err))
+		const payload = req.decoded
+
+		if (payload && payload.user === 'admin') {
+			User.find({})
+				.select('-password')
+				.then(users => res.status(200).send(users))
+				.catch(err => res.status(500).send(err))
+		} else {
+			res.status(401).send({
+				error: 'Authorization Error',
+			})
+		}
 	},
 }
