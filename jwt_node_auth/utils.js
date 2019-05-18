@@ -5,7 +5,6 @@ module.exports = {
 		const authorizationHeader = req.headers.authorization
 
 		if (authorizationHeader) {
-			// Bearer <token>
 			const token = req.header('authorization')
 			const options = {
 				expiresIn: '2d',
@@ -22,7 +21,6 @@ module.exports = {
 
 				next()
 			} catch (err) {
-				// throw new Error(err)
 				res.status(401).send(err)
 			}
 		} else {
