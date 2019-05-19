@@ -2,6 +2,7 @@ const controller = require('../controllers/users')
 const validateToken = require('../utils').validateToken
 
 module.exports = router => {
+	// both post and get router handle by the router.route()
 	router
 		.route('/users')
 		.post(controller.add)
