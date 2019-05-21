@@ -5,6 +5,8 @@ const User = require('../models/users')
 module.exports = {
 	add: (req, res) => {
 		const { name, password } = req.body
+
+		// Actually we need to validate the data before saving in database
 		const user = new User({ name, password })
 
 		user.save()
