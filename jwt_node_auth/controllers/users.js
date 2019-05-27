@@ -25,7 +25,7 @@ module.exports = {
 						.compare(password, user.password)
 						.then(match => {
 							if (match) {
-								// create a token
+								// create a token with expiration
 								const payload = { user: user.name }
 								const options = {
 									expiresIn: '2d',
