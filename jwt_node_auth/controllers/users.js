@@ -51,6 +51,7 @@ module.exports = {
 	getAll: (req, res) => {
 		const payload = req.decoded
 
+		// access only to admin users
 		if (payload && payload.user === 'admin') {
 			User.find({})
 				.select('-password')
