@@ -24,6 +24,7 @@ userSchema.pre('save', function(next) {
 	const user = this
 
 	// don't rehash if it's an old / existing user
+	// isModified and isNew is default mongoose object
 	if (!user.isModified || !user.isNew) {
 		next()
 	} else {
