@@ -24,6 +24,7 @@ if (environment !== 'production') {
 	app.use(logger('dev'))
 }
 
+// send router as dependency injection
 app.use('/api/v1', routes(router))
 
 app.listen(`${stage.port}`, () => {
