@@ -30,7 +30,7 @@ userSchema.pre('save', function(next) {
 	} else {
 		bcrypt.hash(user.password, stage.saltingRounds, (err, hash) => {
 			if (err) {
-				console.log(`Error hashing password for user ${user.name}`)
+				// console.log(`Error hashing password for user ${user.name}`)
 				next(err)
 			} else {
 				user.password = hash
