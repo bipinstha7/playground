@@ -7,15 +7,11 @@ module.exports = {
 		if (authorizationHeader) {
 			const token = req.header('authorization')
 			const options = {
-				expiresIn: '2d',
+				expiresIn: '2d'
 			}
 
 			try {
-				const result = jwt.verify(
-					token,
-					process.env.JWT_SECRET,
-					options
-				)
+				const result = jwt.verify(token, process.env.JWT_SECRET, options)
 
 				req.decoded = result
 
@@ -25,8 +21,8 @@ module.exports = {
 			}
 		} else {
 			res.status(401).send({
-				error: 'Authorization Error. Token Required',
+				error: 'Authorization Error. Token Required'
 			})
 		}
-	},
+	}
 }
